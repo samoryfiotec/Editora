@@ -3,15 +3,15 @@
 left to right direction
 
 actor Usuario
-actor Administrador
+' actor Administrador
 
 rectangle "Editora" {
     Usuario -- (Realizar Login)
     Usuario -- (Emitir Boleto)
-    Usuario -- (Atualizar Perfil)
-    Administrador -- (Gerenciar Usuários)
-    Administrador -- (Visualizar Relatórios)
-    (Gerenciar Usuários) .> (Realizar Login) : <<include>>
+    ' Usuario -- (Atualizar Perfil)
+    ' Administrador -- (Gerenciar Usuários)
+    ' Administrador -- (Visualizar Relatórios)
+    ' (Gerenciar Usuários) .> (Realizar Login) : <<include>>
 }
 
 @enduml
