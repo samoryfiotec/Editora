@@ -1,15 +1,16 @@
-@startuml
-!theme plain
-left to right direction
+@startuml ConsignadoEditora
+Title: Diagrama de Caso de Uso Principal - Consignado Editora
+!theme aws-orange
+' left to right direction
 
-actor Usuario
-' actor Administrador
+actor Livreiro
+actor Administrador
 
 rectangle "Editora" {
-    Usuario -- (Realizar Login)
-    Usuario -- (Emitir Boleto)
+    Livreiro -- (Requisita Consignado)
+    Livreiro -- (Vende Consignado)
     ' Usuario -- (Atualizar Perfil)
-    ' Administrador -- (Gerenciar Usuários)
+    Administrador -- (Gera Boleto)
     ' Administrador -- (Visualizar Relatórios)
     ' (Gerenciar Usuários) .> (Realizar Login) : <<include>>
 }
