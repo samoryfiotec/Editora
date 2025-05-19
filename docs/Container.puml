@@ -1,0 +1,19 @@
+@startuml EditoraConsignadoContainer
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(administrador, "Administrador", "Usuário que gerencia o sistema")
+'Person(livreiro, "Livreiro", "Usuário que gerencia os livros")
+Container(webapp, "AplicacaoWeb", "React", "FrontEnd da aplicação")
+Container(webhook, "Webhook", "Sistema de terceiros", "Sistema externo que fornece informações sobre o cliente")
+Container(api, "API Backend", "NET Core MVC", "API Rest para a aplicacao", "BackEnd da aplicação")
+ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de Dados da aplicação")
+Container_Ext(sistemaFinanceiro, "Sistema Externo", "Sistema de terceiros", "Sistema externo que fornece informações sobre o cliente")
+
+Rel(administrador, webapp, "Usa")
+'Rel(livreiro, mobileapp, "Usa")
+Rel(webhook, api, "Requisições HTTPS")
+Rel(webapp, api, "Requisições HTTPS")
+Rel(api, database, "SQL", "Usa")
+Rel(api, sistemaFinanceiro, "Requisições HTTPS", "Usa")
+
+@enduml

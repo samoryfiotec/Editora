@@ -1,0 +1,16 @@
+@startuml EditoraConsignadoContext
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+
+AddRelTag("sync", $textColor="black", $lineColor="black", $lineStyle="dashed")
+
+Person(livreiro, "Livreiro", "Usuario que solicita consignação")
+Person(administrador, "Administrador", "Usuario que libera consignação e gera boleto")
+System(sistemaEditora, "Editora no PAP", "Sistema da Editora no PAP gerencia consignados.")
+System_Ext(servicoFinanceiro, "Serviço Financeiro", "Serviço externo financeiro gera o boleto.")
+
+Rel(livreiro, sistemaEditora, "Retorna Consignação", $tags="sync")
+Rel(administrador, sistemaEditora, "Requista Boleto")
+Rel(sistemaEditora, servicoFinanceiro, "Gera Boleto", $tags="sync")
+
+@enduml
