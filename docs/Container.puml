@@ -1,19 +1,25 @@
 @startuml EditoraConsignadoContainer
 !includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 
-Person(administrador, "Administrador", "Usuário que gerencia o sistema")
-'Person(livreiro, "Livreiro", "Usuário que gerencia os livros")
-Container(webapp, "AplicacaoWeb", "React", "FrontEnd da aplicação")
-Container(webhook, "Webhook", "Sistema de terceiros", "Sistema externo que fornece informações sobre o cliente")
-Container(api, "API Backend", "NET Core MVC", "API Rest para a aplicacao", "BackEnd da aplicação")
-ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de Dados da aplicação")
-Container_Ext(sistemaFinanceiro, "Sistema Externo", "Sistema de terceiros", "Sistema externo que fornece informações sobre o cliente")
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/react.puml
+!include DEVICONS/netmagazine.puml
+' !include DEVICONS/sap.puml
+!include DEVICONS/msql_server.puml
+!include FONTAWESOME/users.puml
 
-Rel(administrador, webapp, "Usa")
-'Rel(livreiro, mobileapp, "Usa")
-Rel(webhook, api, "Requisições HTTPS")
+Person(contasReceber, "Contas a Receber", "Usuário que gerencia o boleto do consignado")
+Container(webapp, "FrontEnd no PAP", "React", "FrontEnd em React da aplicação da Editora no PAP", $sprite="react")
+Container(api, "API Backend", "NET Core", "API Rest para a aplicacao", $sprite="netmagazine")
+Container(sap, "SAP", "SAP da Editora", "Sistema SAP que fornece informações da consignação")
+ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de dados da aplicação", $sprite="msql_server")
+Container_Ext(sistemaFinanceiro, "Bradesco", "API do Bradesco", "Sistema financeiro externo que gera o boleto")
+
+Rel(contasReceber, webapp, "Gerencia")
 Rel(webapp, api, "Requisições HTTPS")
-Rel(api, database, "SQL", "Usa")
+Rel(api, database, "Persiste", "Usa")
+Rel(api, sap, "Consulta Informações", "Usa")
 Rel(api, sistemaFinanceiro, "Requisições HTTPS", "Usa")
 
 @enduml
