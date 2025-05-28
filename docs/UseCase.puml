@@ -1,18 +1,11 @@
 @startuml ConsignadoEditora
-Title: Diagrama de Caso de Uso Principal - Consignado Editora
+Title: Caso de Uso Principal - Boleto do Consignado
 !theme aws-orange
-' left to right direction
 
-actor Livreiro
-actor Administrador
+actor ContasReceber
 
-rectangle "Editora" {
-    Livreiro -- (Requisita Consignado)
-    Livreiro -- (Vende Consignado)
-    ' Usuario -- (Atualizar Perfil)
-    Administrador -- (Gera Boleto)
-    ' Administrador -- (Visualizar Relatórios)
-    ' (Gerenciar Usuários) .> (Realizar Login) : <<include>>
+rectangle "PAP Editora" as PAP {
+    ContasReceber --- (Gerencia Boleto)
 }
 
 @enduml
