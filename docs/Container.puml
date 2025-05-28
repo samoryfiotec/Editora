@@ -5,7 +5,6 @@
 !define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
 !include DEVICONS/react.puml
 !include DEVICONS/netmagazine.puml
-' !include DEVICONS/sap.puml
 !include DEVICONS/msql_server.puml
 !include FONTAWESOME/users.puml
 
@@ -16,10 +15,10 @@ Container(sap, "SAP", "SAP da Editora", "Sistema SAP que fornece informações d
 ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de dados da aplicação", $sprite="msql_server")
 Container_Ext(sistemaFinanceiro, "Bradesco", "API do Bradesco", "Sistema financeiro externo que gera o boleto")
 
-Rel(contasReceber, webapp, "Gerencia")
-Rel(webapp, api, "Requisições HTTPS")
-Rel(api, database, "Persiste", "Usa")
-Rel(api, sap, "Consulta Informações", "Usa")
-Rel(api, sistemaFinanceiro, "Requisições HTTPS", "Usa")
+Rel(contasReceber, webapp, "Gerencia","HTTPS/JSON")
+Rel(webapp, api, "Requisições HTTPS", "HTTPS/JSON")
+Rel(api, sistemaFinanceiro, "Gera Boleto", "HTTPS/JSON")
+Rel(api, database, "Persiste Consignaçao",  "SQL por Repository")
+Rel(api, sap, "Consulta Informações", "RFC")
 
 @enduml
