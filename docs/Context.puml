@@ -4,8 +4,8 @@
 AddRelTag("sync", $textColor="black", $lineColor="black", $lineStyle="dashed")
 
 Person(contas, "Contas a Receber", "Usuario que gerencia os boletos de consignação.")
-System(PAP, "Editora no PAP", "Sistema da Editora no PAP gerencia consignados.")
-System(SAP, "SAP", "SAP da Editora, retorna informações para consignação.")
+System(PAP, "Boletos no PAP", "Sistema no PAP para gerenciar boletos.")
+System(SAP, "SAP", "ERP SAP que retorna informações para boletos.")
 System_Ext(servicoFinanceiro, "Bradesco", "Serviço externo financeiro que gera o boleto.")
 
 Rel(contas, PAP, "Gerencia Boleto", "HTTPS/JSON")

@@ -1,0 +1,43 @@
+@startuml
+
+title Emissão de Boleto Bancário
+
+salt
+{
+    {+
+        [Novo]
+        [Mostrar todos] [Mostrar todos não encerrados*] [Mostrar Aguardando pagamento] [Mostrar Vencidos] [Mostrar Em processo de baixa] [Mostrar Encerrados]
+    }
+' }
+
+' salt
+' {
+    {+
+        | Boleto [🔍] | Data de emissão [🔍] | Valor [🔍] | Data de vencimento [🔍] | Nome [🔍] | Doc Faturamento [🔍] | Status [🔍] | Ação |
+        | 12345678... [ver mais] | 01/06/2024 | R$ 500,00 | 10/06/2024 | João Silva | 20240001 | Aguardando pagamento | [ver boleto] |
+        | 87654321... [ver mais] | 02/06/2024 | R$ 300,00 | 09/06/2024 | Maria Souza | 20240002 | Vencido | [ver boleto] |
+        | ... | ... | ... | ... | ... | ... | ... | ... |
+    }
+' }
+
+' salt
+' {
+    {+
+        Emissão de Boletos – Editora Fiocruz
+        [Campos de preenchimento]
+        Nome/Razão Social: Fiotec – Fundação para o Desenvolvimento Científico e Tecnológico em Saúde (bloqueado)
+        CNPJ/CPF: 02.385.669.0001-74 (bloqueado)
+        Endereço: Av. Brasil, 4036 (bloqueado)
+        Agência: 0026 (bloqueado)
+        Conta Bancária: 184116-5 (bloqueado)
+        Código do Beneficiário: 237 (bloqueado)
+    }
+' }
+' salt
+' {
+    {+
+        [Emitir Boleto]
+    }
+}
+
+@enduml

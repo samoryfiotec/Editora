@@ -9,16 +9,18 @@
 !include FONTAWESOME/users.puml
 
 Person(contasReceber, "Contas a Receber", "Usuário que gerencia o boleto do consignado")
-Container(webapp, "FrontEnd no PAP", "React", "FrontEnd em React da aplicação da Editora no PAP", $sprite="react")
-Container(api, "API Backend", "NET Core", "API Rest para a aplicacao", $sprite="netmagazine")
-Container(sap, "SAP", "SAP da Editora", "Sistema SAP que fornece informações da consignação")
+System_Boundary(pap, "PAP") {
+Container(spa, "SPA  PAP", "PAP", "Página SPA dos Boletos no PAP", $sprite="react")
+Container(api, "API Backend", "REST API NET Core", "API Rest para atender os boletos no PAP", $sprite="netmagazine")
+}
+Container(sap, "SAP", "ERP SAP", "Sistema ERP que fornece informações da consignação")
 ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de dados da aplicação", $sprite="msql_server")
 Container_Ext(sistemaFinanceiro, "Bradesco", "API do Bradesco", "Sistema financeiro externo que gera o boleto")
 
-Rel(contasReceber, webapp, "Gerencia","HTTPS/JSON")
-Rel(webapp, api, "Requisições HTTPS", "HTTPS/JSON")
+Rel(contasReceber, spa, "Gerencia","HTTPS/JSON")
+Rel(spa, api, "Requisições HTTPS", "HTTPS/JSON")
 Rel(api, sistemaFinanceiro, "Gera Boleto", "HTTPS/JSON")
-Rel(api, database, "Persiste Consignaçao",  "SQL por Repository")
-Rel(api, sap, "Consulta Informações", "RFC")
+Rel(api, database, "Persiste Geração",  "TCP/IP")
+Rel(api, sap, "Recupera Informações", "RFC")
 
 @enduml
