@@ -1,0 +1,14 @@
+@startuml Component_Back_Boleto
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(api, "API Backend", "NET8", "API Rest para a aplicacao", "BackEnd da aplicação"){
+    Component(controller, "Controlador REST", "Controlador MVC", "Recebe Requisições HTTP")
+    Component(domain, "Domínio", "Classe de Domínio", "Contém as classes de domínio")
+    Component(service, "Serviço", "Classe de Serviço", "Contém a lógica de negócio")
+    Component(infra, "Infraestructure", "Classe de Infraestrutura", "Configurações e serviços auxiliares")
+}
+
+Rel(controller, domain, "Chamada de Métodos")
+Rel(service, infra, "Consulta ao Banco de Dados")
+
+@enduml
