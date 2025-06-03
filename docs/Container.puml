@@ -10,17 +10,20 @@
 
 Person(contasReceber, "Contas a Receber", "Usuário que gerencia o boleto do consignado")
 System_Boundary(pap, "PAP") {
-Container(spa, "SPA  PAP", "PAP", "Página SPA dos Boletos no PAP", $sprite="react")
-Container(api, "API Backend", "REST API NET Core", "API Rest para atender os boletos no PAP", $sprite="netmagazine")
+Container(spa, "SPA  PAP", "Portal de Aplicativos", "Página SPA dos Boletos no PAP", $sprite="react")
+Container(worker, "Consulta Ativa", "Worker em .NET 8", "Worker para fazer consulta ativa no SAP e atualizar BD", $sprite="netmagazine")
+Container(api, "API Backend", "API Rest em .NET 8", "API Rest para gerenciar os boletos no PAP", $sprite="netmagazine")
 }
 Container(sap, "SAP", "ERP SAP", "Sistema ERP que fornece informações da consignação")
 ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de dados da aplicação", $sprite="msql_server")
 Container_Ext(sistemaFinanceiro, "Bradesco", "API do Bradesco", "Sistema financeiro externo que gera o boleto")
 
 Rel(contasReceber, spa, "Gerencia","HTTPS/JSON")
-Rel(spa, api, "Requisições HTTPS", "HTTPS/JSON")
+Rel(spa, worker, "Verifica Status", "HTTPS/JSON")
+Rel(spa, api, "Gerencia Boletos", "HTTPS/JSON")
 Rel(api, sistemaFinanceiro, "Gera Boleto", "HTTPS/JSON")
 Rel(api, database, "Persiste Geração",  "TCP/IP")
-Rel(api, sap, "Recupera Informações", "RFC")
+Rel(worker, sap, "Consulta Ativa", "RFC")
+Rel(worker, database, "Atualiza Status", "TCP/IP")
 
 @enduml
