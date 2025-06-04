@@ -8,11 +8,15 @@
 !include DEVICONS/msql_server.puml
 !include FONTAWESOME/users.puml
 
+AddRelTag("sync", $textColor="black", $lineColor="black", $lineStyle="dashed")
+
 Person(contasReceber, "Contas a Receber", "Usuário que gerencia o boleto do consignado")
 System_Boundary(pap, "PAP") {
 Container(spa, "SPA  PAP", "Portal de Aplicativos", "Página SPA dos Boletos no PAP", $sprite="react")
-Container(worker, "Consulta Ativa", "Worker em .NET 8", "Worker para fazer consulta ativa no SAP e atualizar BD", $sprite="netmagazine")
+Container_Boundary(backend, "Backend da Aplicação")  {
+Container(worker, "Consulta Ativa", "API + Worker em .NET 8", "Worker para fazer consulta ativa no SAP e atualizar BD", $sprite="netmagazine")
 Container(api, "API Backend", "API Rest em .NET 8", "API Rest para gerenciar os boletos no PAP", $sprite="netmagazine")
+}
 }
 Container(sap, "SAP", "ERP SAP", "Sistema ERP que fornece informações da consignação")
 ContainerDb(database, "Banco de Dados", "SQLServer", "Banco de dados da aplicação", $sprite="msql_server")
@@ -23,7 +27,7 @@ Rel(spa, worker, "Verifica Status", "HTTPS/JSON")
 Rel(spa, api, "Gerencia Boletos", "HTTPS/JSON")
 Rel(api, sistemaFinanceiro, "Gera Boleto", "HTTPS/JSON")
 Rel(api, database, "Persiste Geração",  "TCP/IP")
-Rel(worker, sap, "Consulta Ativa", "RFC")
+Rel(worker, sap, "Consulta Ativa", "RFC", $tags="sync")
 Rel(worker, database, "Atualiza Status", "TCP/IP")
 
 @enduml
