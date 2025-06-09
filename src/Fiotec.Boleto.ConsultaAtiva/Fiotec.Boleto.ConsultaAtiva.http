@@ -1,0 +1,6 @@
+@Fiotec.Boleto.ConsultaAtiva_HostAddress = http://localhost:5227
+
+GET {{Fiotec.Boleto.ConsultaAtiva_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

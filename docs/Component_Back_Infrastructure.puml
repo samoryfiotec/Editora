@@ -1,0 +1,17 @@
+@startuml Component_Back_Infrastructure
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+AddRelTag("sync", $textColor="black", $lineColor="black", $lineStyle="dashed")
+
+Container_Boundary(infra, "Infrastructure",)  {
+    Component(data, "DataContext", "Contexto de Dados", "Contexto do ORM")
+    Component(repository, "Repository", "Pattern", "Repositórios de dados")
+    Component(unityofwork, "UnityOfWork", "Pattern", "Encapsula operações de dados")
+    Component(rfc, "Remote Function Call", "Comunicação Remota com o SAP")
+}
+
+Rel(data, repository, "Acesso a dados", $tags="sync")
+Rel(repository, unityofwork, "Gerenciamento de transações", $tags="sync")   
+Rel(unityofwork, data, "Persistência de dados", $tags="sync")
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml Component_Back_Boleto
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+AddRelTag("sync", $textColor="black", $lineColor="black", $lineStyle="dashed")
+
+Container_Boundary(backend, "Backend da Aplicação")  {
+    Component(worker, "Consulta Ativa", "API Rest + Worker", "Processamento de tarefas em segundo plano")
+    Component(api, "API REST", "Web API Rest", "Rotas em Minimal API para gerenciamento")
+    Component(domain, "Domain", "Class Library", "Contém as classes de domínio")
+    Component(application, "Application", "Class Library", "Contém a lógica de negócio")
+    Component(infra, "Infrastructure", "Class Library", "Configurações, dados e serviços auxiliares")
+}
+
+Rel(worker, domain, "Entidades da Aplicação")
+Rel(api, domain, "Entidades da Aplicação")
+Rel(api, application, "Lógica de Negócio", $tags="sync")
+Rel(worker, application, "Lógica de Negócio", $tags="sync")
+Rel(application, infra, "Acessa os serviços relacionados", $tags="sync")  
+
+@enduml
