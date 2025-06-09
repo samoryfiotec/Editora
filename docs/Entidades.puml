@@ -1,13 +1,11 @@
 @startuml Entidades
-' Definição das entidades do sistema de boletos
 title Entidades dos Boletos da Editora
 
 entity Emissor {
-    +id: int
     *nome: string
     *cnpj: string
-    *conta: Conta
-    *endereco: Endereco
+    *endereco: string
+    *conta: Conta    
 }
 
 entity Cliente {
@@ -15,14 +13,14 @@ entity Cliente {
     *nome: string
     *cpf: string
     *endereco: Endereco        
-    email: string
+    *email: string
     telefone: string
 }
 
 entity Faturamento {
     +id: int
     *data: date
-    *valor_total: decimal
+    *valor: decimal
     *cliente_id: int
 }
 
@@ -40,7 +38,7 @@ entity Historico {
     *status: Status
     *observacao: string
     *data_inclusao: date
-    *boleto_id: int
+    *faturamento_id: int
 }
 
 entity Endereco {
@@ -54,12 +52,11 @@ entity Endereco {
 }
 
 entity Conta {
-    +id: int
     *agencia: string
     digito_agencia: string
     *numero: string
     *digito_numero: string
-    *beneficiario: int
+    *beneficiario: string
 }
 
 entity Status {
@@ -68,12 +65,11 @@ entity Status {
 }
 
 Emissor ||--|| Conta : possui >
-Emissor ||--|| Endereco : sediado >
 Cliente ||--|| Endereco : mora >
 Cliente ||--o{ Faturamento : realiza >
 Faturamento ||--|| Boleto : gera >
 Boleto ||--o{ Status : está >
-'Historico||--o{ Status : está >
-(Faturamento, Boleto) . Historico : monitora
+Historico ||--|| Faturamento : registra >
+Historico||--o{ Status : está >
 
 @enduml

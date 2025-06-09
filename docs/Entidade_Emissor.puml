@@ -1,14 +1,14 @@
 @startjson Exemplo de JSON
 #highlight "conta" / "agencia"
-' #highlight "endereco" / "cidade"
-' #highlight "numerosDeTelefone" / "0" / "numero"
+#highlight "agencia" / "conta"
 {
   "nome": "Fiotec - Fundação para o Desenvolvimento Científico e Tecnológico em Saúde",
   "cnpj": "02.385.669.0001-74",
   "endereco": "Avenida Brasil, 4036",  
   "conta": {
     "agencia": "0026",
-    "conta": "184116-5",
+    "conta": "184116",
+    "digito_agencia": "5",
     "beneficiario": "237"
   }
 }
