@@ -1,0 +1,11 @@
+@startuml DiagramaSequencia
+!theme materia-outline
+title Diagrama de Sequência para Geração de Boletos
+actor       ContasPagar  as conta
+participant       Banco         as banco
+participant       Cliente       as cliente
+conta -> banco : Solicitar geração de boleto
+banco -> conta : Retorna boleto gerado
+conta -> cliente : Envia boleto via e-mail
+
+@enduml
