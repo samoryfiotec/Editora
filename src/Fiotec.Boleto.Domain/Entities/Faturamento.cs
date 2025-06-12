@@ -1,18 +1,21 @@
-﻿namespace Fiotec.Boleto.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Faturamento
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
         public decimal Valor { get; set; }
-        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
+        public ICollection<Boleto> Boletos { get; set; } = new List<Boleto>();
+        public ICollection<Historico> Historicos { get; set; } = new List<Historico>();
 
-        public Faturamento(int id, DateTime data, decimal valor, int clienteId)
+        public Faturamento(DateTime data, decimal valor, Cliente cliente)
         {
-            Id = id;
             Data = data;
             Valor = valor;
-            ClienteId = clienteId;
+            Cliente = cliente;
         }
+
+        public Faturamento() { }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fiotec.Boleto.Domain.Entities
+namespace Fiotec.Boletos.Domain.Entities
 {
     public class BoletoValidator
     {
@@ -20,13 +20,16 @@ namespace Fiotec.Boleto.Domain.Entities
                 yield return "Valor deve ser maior que zero.";
 
             if (boleto.Vencimento == default)
-                yield return "Vencimento é obrigatório.";
+                yield return "Ter um vencimento é obrigatório.";
 
             if (boleto.Status == null)
-                yield return "Status é obrigatório.";
+                yield return "Estar em um status é obrigatório.";
 
-            if (boleto.FaturamentoId <= 0)
-                yield return "FaturamentoId deve ser maior que zero.";
+            if (boleto.Emissor == null)
+                yield return "Tem o emissor é obrigatório.";
+
+            if (boleto.Faturamento == null)
+                yield return "Faturamento é obrigatório.";
         }
     }
 }

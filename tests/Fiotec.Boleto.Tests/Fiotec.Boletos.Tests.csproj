@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Fiotec.Boleto.API\Fiotec.Boleto.API.csproj" />
-    <ProjectReference Include="..\..\src\Fiotec.Boleto.Application\Fiotec.Boleto.Application.csproj" />
-    <ProjectReference Include="..\..\src\Fiotec.Boleto.ConsultaAtiva\Fiotec.Boleto.ConsultaAtiva.csproj" />
-    <ProjectReference Include="..\..\src\Fiotec.Boleto.Domain\Fiotec.Boleto.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Fiotec.Boleto.Infrastructure\Fiotec.Boleto.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Fiotec.Boleto.API\Fiotec.Boletos.API.csproj" />
+    <ProjectReference Include="..\..\src\Fiotec.Boleto.Application\Fiotec.Boletos.Application.csproj" />
+    <ProjectReference Include="..\..\src\Fiotec.Boleto.ConsultaAtiva\Fiotec.Boletos.ConsultaAtiva.csproj" />
+    <ProjectReference Include="..\..\src\Fiotec.Boleto.Domain\Fiotec.Boletos.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Fiotec.Boleto.Infrastructure\Fiotec.Boletos.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

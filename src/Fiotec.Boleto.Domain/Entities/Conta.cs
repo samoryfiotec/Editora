@@ -1,4 +1,4 @@
-﻿namespace Fiotec.Boleto.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Conta
     {
@@ -16,5 +16,7 @@
             Beneficiario = beneficiario;
             DigitoAgencia = digitoAgencia;
         }
+
+        public Conta() { }
     }
 }

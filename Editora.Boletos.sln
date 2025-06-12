@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.API", "src\Fiotec.Boleto.API\Fiotec.Boleto.API.csproj", "{BC668DDE-6BF3-4FE8-8779-765098F64CE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.API", "src\Fiotec.Boleto.API\Fiotec.Boletos.API.csproj", "{BC668DDE-6BF3-4FE8-8779-765098F64CE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.ConsultaAtiva", "src\Fiotec.Boleto.ConsultaAtiva\Fiotec.Boleto.ConsultaAtiva.csproj", "{F44BD8C8-905C-455D-8C02-814F03A3679D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.ConsultaAtiva", "src\Fiotec.Boleto.ConsultaAtiva\Fiotec.Boletos.ConsultaAtiva.csproj", "{F44BD8C8-905C-455D-8C02-814F03A3679D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.Domain", "src\Fiotec.Boleto.Domain\Fiotec.Boleto.Domain.csproj", "{40D4C77B-EFEA-4D41-8F49-D00D7B174C7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.Domain", "src\Fiotec.Boleto.Domain\Fiotec.Boletos.Domain.csproj", "{40D4C77B-EFEA-4D41-8F49-D00D7B174C7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.Application", "src\Fiotec.Boleto.Application\Fiotec.Boleto.Application.csproj", "{8D012434-08C2-4E8A-B542-195E78408DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.Application", "src\Fiotec.Boleto.Application\Fiotec.Boletos.Application.csproj", "{8D012434-08C2-4E8A-B542-195E78408DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.Infrastructure", "src\Fiotec.Boleto.Infrastructure\Fiotec.Boleto.Infrastructure.csproj", "{D7C3B813-DED9-42E3-94C6-E9A0DE758FF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.Infrastructure", "src\Fiotec.Boleto.Infrastructure\Fiotec.Boletos.Infrastructure.csproj", "{D7C3B813-DED9-42E3-94C6-E9A0DE758FF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boleto.Tests", "tests\Fiotec.Boleto.Tests\Fiotec.Boleto.Tests.csproj", "{4F8C719F-FA66-43A4-B4A1-84CB0E7A71F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiotec.Boletos.Tests", "tests\Fiotec.Boleto.Tests\Fiotec.Boletos.Tests.csproj", "{4F8C719F-FA66-43A4-B4A1-84CB0E7A71F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

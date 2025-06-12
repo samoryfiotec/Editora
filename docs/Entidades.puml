@@ -30,6 +30,7 @@ entity Boleto {
     *valor: decimal
     *vencimento: date
     *status: Status
+    *emissor: Emissor
     *faturamento_id: int
 }
 
@@ -69,6 +70,7 @@ Cliente ||--|| Endereco : mora >
 Cliente ||--o{ Faturamento : realiza >
 Faturamento ||--|| Boleto : gera >
 Boleto ||--o{ Status : está >
+Boleto ||--|| Emissor : contém >
 Historico ||--|| Faturamento : registra >
 Historico||--o{ Status : está >
 
