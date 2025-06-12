@@ -1,6 +1,6 @@
-using Fiotec.Boleto.Domain.Entities;
+using Fiotec.Boletos.Domain.Entities;
 
-namespace Fiotec.Boleto.Tests.Domain.Entities
+namespace Fiotec.Boletos.Tests.Domain.Entities
 {
     public class ContaTests
     {

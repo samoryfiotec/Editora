@@ -1,4 +1,6 @@
-﻿namespace Fiotec.Boleto.Domain.Entities
+﻿using Fiotec.Boletos.Domain.Entities;
+
+namespace Fiotec.Boletos.Domain.Entities
 {
     public class Boleto
     {
@@ -6,17 +8,22 @@
         public string Numero { get; set; }
         public decimal Valor { get; set; }
         public DateTime Vencimento { get; set; }
+        public int StatusId { get; set; }
         public Status Status { get; set; }
-        public int FaturamentoId { get; set; }
+        public Emissor Emissor { get; set; }
+        public Faturamento Faturamento { get; set; }
 
-        public Boleto(int id, string numero, decimal valor, DateTime vencimento, Status status, int faturamentoId)
+        public Boleto(string numero, decimal valor, DateTime vencimento, Status status, Emissor emissor, Faturamento faturamento)
         {
-            Id = id;
             Numero = numero;
             Valor = valor;
             Vencimento = vencimento;
             Status = status;
-            FaturamentoId = faturamentoId;
+            StatusId = status.Id;
+            Emissor = emissor;
+            Faturamento = faturamento;
         }
+
+        public Boleto() { }
     }
 }

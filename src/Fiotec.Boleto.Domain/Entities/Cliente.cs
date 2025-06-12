@@ -1,4 +1,4 @@
-﻿namespace Fiotec.Boleto.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Cliente
     {
@@ -8,6 +8,7 @@
         public Endereco Endereco { get; set; }
         public string Email { get; set; }
         public string? Telefone { get; set; }
+        public ICollection<Faturamento> Faturamentos { get; set; } = new List<Faturamento>();
 
         public Cliente(int id, string nome, string cpf, Endereco endereco, string email, string? telefone = null)
         {
@@ -18,5 +19,7 @@
             Email = email;
             Telefone = telefone;
         }
+
+        public Cliente() { }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Fiotec.Boleto.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Historico
     {
@@ -7,14 +7,17 @@
         public string Observacao { get; set; }
         public DateTime DataInclusao { get; set; }
         public int FaturamentoId { get; set; }
+        public Faturamento Faturamento { get; set; }
 
-        public Historico(int id, Status status, string observacao, DateTime dataInclusao, int faturamentoId)
+        public Historico(Status status, string observacao, DateTime dataInclusao, Faturamento faturamento)
         {
-            Id = id;
             Status = status;
             Observacao = observacao;
             DataInclusao = dataInclusao;
-            FaturamentoId = faturamentoId;
+            Faturamento = faturamento;
+            FaturamentoId = faturamento.Id;
         }
+
+        public Historico() { }
     }
 }

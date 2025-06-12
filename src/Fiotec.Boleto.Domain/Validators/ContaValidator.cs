@@ -1,6 +1,7 @@
 using FluentValidation;
+using Fiotec.Boletos.Domain.Entities;
 
-namespace Fiotec.Boleto.Domain.Entities
+namespace Fiotec.Boletos.Domain.Validators
 {
     public class ContaValidator : AbstractValidator<Conta>
     {

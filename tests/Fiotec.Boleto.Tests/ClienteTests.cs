@@ -1,6 +1,6 @@
-using Fiotec.Boleto.Domain.Entities;
+using Fiotec.Boletos.Domain.Entities;
 
-namespace Fiotec.Boleto.Tests.Domain.Entities
+namespace Fiotec.Boletos.Tests.Domain.Entities
 {
     public class ClienteTests
     {
@@ -11,7 +11,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
             int id = 1;
             string nome = "João Carlos de Andrade e Silva";
             string cpf = "123.456.789-00";
-            var endereco = new Endereco("Rua dos Andradas", "181", "Rio de Janeiro", "RJ", "20000-005", id, "Centro");
+            var endereco = new Endereco("Rua dos Andradas", "181", "Rio de Janeiro", "RJ", "20000-005", "Centro");
             string email = "joaocarlosas@gmail.com";
             string telefone = "99999-8888";
 
@@ -34,7 +34,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
             int id = 2;
             string nome = "Maria do Socorro de Souza";
             string cpf = "987.654.321-00";
-            var endereco = new Endereco("Avenida Presidente Vargas", "278", "Varginha", "MG", "87654-321", id);
+            var endereco = new Endereco("Avenida Presidente Vargas", "278", "Varginha", "MG", "87654-321");
             string email = "mariasocsouza@gmail.com";
 
             // Act
@@ -53,8 +53,8 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         public void Propriedades_Devem_Permitir_Atribuicao()
         {
             // Arrange
-            var endereco1 = new Endereco("Rua Camerino", "300", "Sorocaba", "SP", "11223-445", 3);
-            var endereco2 = new Endereco("Rua Direita", "400", "Palmas", "TO", "99887-665", 4, "Bairro Novo");
+            var endereco1 = new Endereco("Rua Camerino", "300", "Sorocaba", "SP", "11223-445");
+            var endereco2 = new Endereco("Rua Direita", "400", "Palmas", "TO", "99887-665", "Bairro Novo");
             var cliente = new Cliente(0, "", "", endereco1, "");
 
             // Act

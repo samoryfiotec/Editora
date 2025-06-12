@@ -1,9 +1,8 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace Fiotec.Boleto.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Emissor
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public string Endereco { get; set; }
@@ -16,5 +15,7 @@ namespace Fiotec.Boleto.Domain.Entities
             Endereco = endereco;
             Conta = conta;
         }
+
+        public Emissor() { }
     }
 }

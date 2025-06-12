@@ -1,7 +1,7 @@
-using Fiotec.Boleto.Domain.Entities;
+using Fiotec.Boletos.Domain.Entities;
 using FluentValidation;
 
-namespace Fiotec.Boleto.Domain.Validators
+namespace Fiotec.Boletos.Domain.Validators
 {
     public class ClienteValidator : AbstractValidator<Cliente>
     {

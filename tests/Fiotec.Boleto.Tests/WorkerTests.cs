@@ -1,8 +1,8 @@
-using Fiotec.Boleto.ConsultaAtiva;
+using Fiotec.Boletos.ConsultaAtiva;
 using Microsoft.Extensions.Logging;
 using Moq;
 
-namespace Fiotec.Boleto.Tests
+namespace Fiotec.Boletos.Tests
 {
     public class WorkerTests
     {

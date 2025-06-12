@@ -1,7 +1,7 @@
-using Fiotec.Boleto.Domain.Entities;
+using Fiotec.Boletos.Domain.Entities;
 using FluentValidation.TestHelper;
 
-namespace Fiotec.Boleto.Tests.Domain.Entities
+namespace Fiotec.Boletos.Tests.Domain.Entities
 {
     public class StatusValidatorTests
     {

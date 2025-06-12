@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Fiotec.Boleto.Domain.Entities
+namespace Fiotec.Boletos.Domain.Entities
 {
     public class StatusValidator : AbstractValidator<Status>
     {

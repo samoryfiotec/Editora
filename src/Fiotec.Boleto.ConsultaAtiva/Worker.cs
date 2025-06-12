@@ -1,4 +1,4 @@
-﻿namespace Fiotec.Boleto.ConsultaAtiva
+﻿namespace Fiotec.Boletos.ConsultaAtiva
 {
     public class Worker : BackgroundService
     {

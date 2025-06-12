@@ -1,4 +1,4 @@
-using Fiotec.Boleto.ConsultaAtiva;
+using Fiotec.Boletos.ConsultaAtiva;
 
 var builder = WebApplication.CreateBuilder(args);
 
