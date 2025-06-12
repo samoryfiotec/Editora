@@ -1,20 +1,18 @@
-using System;
 using Fiotec.Boleto.Domain.Entities;
-using Xunit;
 
 namespace Fiotec.Boleto.Tests.Domain.Entities
 {
     public class ClienteTests
     {
         [Fact]
-        public void Constructor_ShouldSetAllProperties_WithTelefone()
+        public void Construtor_Deve_Definir_Todas_As_Propriedades_Com_Telefone()
         {
             // Arrange
             int id = 1;
-            string nome = "João Silva";
+            string nome = "João Carlos de Andrade e Silva";
             string cpf = "123.456.789-00";
-            var endereco = new Endereco("Rua A", "100", "CidadeX", "EstadoY", "12345-678", id, "Centro");
-            string email = "joao@email.com";
+            var endereco = new Endereco("Rua dos Andradas", "181", "Rio de Janeiro", "RJ", "20000-005", id, "Centro");
+            string email = "joaocarlosas@gmail.com";
             string telefone = "99999-8888";
 
             // Act
@@ -30,14 +28,14 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         }
 
         [Fact]
-        public void Constructor_ShouldSetTelefoneToNull_WhenNotProvided()
+        public void Construtor_Deve_Definir_Telefone_Com_Nulo_Quando_Nao_For_Informado()
         {
             // Arrange
             int id = 2;
-            string nome = "Maria Souza";
+            string nome = "Maria do Socorro de Souza";
             string cpf = "987.654.321-00";
-            var endereco = new Endereco("Av. B", "200", "CidadeY", "EstadoZ", "87654-321", id);
-            string email = "maria@email.com";
+            var endereco = new Endereco("Avenida Presidente Vargas", "278", "Varginha", "MG", "87654-321", id);
+            string email = "mariasocsouza@gmail.com";
 
             // Act
             var cliente = new Cliente(id, nome, cpf, endereco, email);
@@ -52,11 +50,11 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         }
 
         [Fact]
-        public void Properties_ShouldBeSettable()
+        public void Propriedades_Devem_Permitir_Atribuicao()
         {
             // Arrange
-            var endereco1 = new Endereco("Rua C", "300", "CidadeZ", "EstadoW", "11223-445", 3);
-            var endereco2 = new Endereco("Rua D", "400", "CidadeW", "EstadoV", "99887-665", 4, "Bairro Novo");
+            var endereco1 = new Endereco("Rua Camerino", "300", "Sorocaba", "SP", "11223-445", 3);
+            var endereco2 = new Endereco("Rua Direita", "400", "Palmas", "TO", "99887-665", 4, "Bairro Novo");
             var cliente = new Cliente(0, "", "", endereco1, "");
 
             // Act
@@ -64,7 +62,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
             cliente.Nome = "Carlos Lima";
             cliente.Cpf = "111.222.333-44";
             cliente.Endereco = endereco2;
-            cliente.Email = "carlos@email.com";
+            cliente.Email = "carloslima@gmail.com";
             cliente.Telefone = "88888-7777";
 
             // Assert
@@ -72,7 +70,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
             Assert.Equal("Carlos Lima", cliente.Nome);
             Assert.Equal("111.222.333-44", cliente.Cpf);
             Assert.Equal(endereco2, cliente.Endereco);
-            Assert.Equal("carlos@email.com", cliente.Email);
+            Assert.Equal("carloslima@gmail.com", cliente.Email);
             Assert.Equal("88888-7777", cliente.Telefone);
         }
     }

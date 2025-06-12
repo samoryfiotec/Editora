@@ -7,7 +7,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
     public class BoletoTests
     {
         [Fact]
-        public void Constructor_ShouldSetAllProperties()
+        public void Construtor_DeveConfigurarTodasPropriedades()
         {
             // Arrange
             int id = 1;
@@ -30,7 +30,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         }
 
         [Fact]
-        public void Properties_ShouldBeSettable()
+        public void Propriedades_DevemEstarConfiguradas()
         {
             // Arrange
             var boleto = new Fiotec.Boleto.Domain.Entities.Boleto(0, "", 0, DateTime.MinValue, new Status(0, ""), 0);

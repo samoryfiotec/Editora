@@ -1,19 +1,18 @@
 using Fiotec.Boleto.Domain.Entities;
-using Xunit;
 
 namespace Fiotec.Boleto.Tests.Domain.Entities
 {
     public class ContaTests
     {
         [Fact]
-        public void Constructor_ShouldSetAllProperties_WithDigitoAgencia()
+        public void Construtor_Deve_Definir_Todas_As_Propriedades_Com_DigitoAgencia()
         {
             // Arrange
             string agencia = "1234";
             string digitoAgencia = "5";
             string numero = "67890";
             string digitoNumero = "1";
-            string beneficiario = "Empresa XYZ";
+            string beneficiario = "237";
 
             // Act
             var conta = new Conta(agencia, numero, digitoNumero, beneficiario, digitoAgencia);
@@ -27,7 +26,7 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         }
 
         [Fact]
-        public void Constructor_ShouldSetAllProperties_WithoutDigitoAgencia()
+        public void Construtor_Deve_Definir_Todas_As_Propriedades_Sem_DigitoAgencia()
         {
             // Arrange
             string agencia = "4321";
@@ -47,24 +46,24 @@ namespace Fiotec.Boleto.Tests.Domain.Entities
         }
 
         [Fact]
-        public void Properties_ShouldBeSettable()
+        public void Propriedades_Devem_Permitir_Atribuicao()
         {
             // Arrange
-            var conta = new Conta("1", "2", "3", "Beneficiario");
+            var conta = new Conta("1", "2", "3", "237");
 
             // Act
             conta.Agencia = "9999";
             conta.DigitoAgencia = "8";
             conta.Numero = "55555";
             conta.DigitoNumero = "0";
-            conta.Beneficiario = "Novo Beneficiario";
+            conta.Beneficiario = "237";
 
             // Assert
             Assert.Equal("9999", conta.Agencia);
             Assert.Equal("8", conta.DigitoAgencia);
             Assert.Equal("55555", conta.Numero);
             Assert.Equal("0", conta.DigitoNumero);
-            Assert.Equal("Novo Beneficiario", conta.Beneficiario);
+            Assert.Equal("237", conta.Beneficiario);
         }
     }
 }
