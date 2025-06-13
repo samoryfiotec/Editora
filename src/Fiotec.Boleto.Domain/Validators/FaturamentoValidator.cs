@@ -1,6 +1,5 @@
-using System;
-using FluentValidation;
 using Fiotec.Boletos.Domain.Entities;
+using FluentValidation;
 
 namespace Fiotec.Boletos.Domain.Validation
 {

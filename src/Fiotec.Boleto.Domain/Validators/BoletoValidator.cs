@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace Fiotec.Boletos.Domain.Entities
 {
     public class BoletoValidator
