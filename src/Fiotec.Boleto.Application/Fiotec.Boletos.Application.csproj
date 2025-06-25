@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Fiotec.Boleto.Domain\Fiotec.Boletos.Domain.csproj" />
+    <ProjectReference Include="..\Fiotec.Boleto.Infrastructure\Fiotec.Boletos.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

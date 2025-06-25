@@ -49,9 +49,9 @@ namespace Fiotec.Boletos.Tests.Domain.Entities
             var data = new DateTime(2023, 1, 1);
             decimal valor = 123.45m;
             var cliente = new Cliente(2, "Carlos Lima", "555.666.777-88", new Endereco("Av. Central", "789", "Cidade Z", "MG", "33333-444"), "carlos@email.com");
-            var boletos = new List<Boleto>
+            var boletos = new List<Fiotec.Boletos.Domain.Entities.Boleto>
             {
-                new Boleto("123", 100, DateTime.Now, new Status(1, "Novo"), null, faturamento)
+                new Fiotec.Boletos.Domain.Entities.Boleto("123", 100, DateTime.Now, new Status(1, "Novo"), null, faturamento)
             };
             var historicos = new List<Historico>
             {

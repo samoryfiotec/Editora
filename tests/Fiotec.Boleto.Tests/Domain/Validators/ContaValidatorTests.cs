@@ -1,4 +1,3 @@
-using Xunit;
 using Fiotec.Boletos.Domain.Entities;
 using Fiotec.Boletos.Domain.Validators;
 using FluentValidation.TestHelper;

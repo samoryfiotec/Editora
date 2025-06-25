@@ -18,12 +18,12 @@ namespace Fiotec.Boletos.Tests.Domain.Validation
         {
             var enderecoMock = new Mock<Endereco>("Rua X", "123", "Cidade", "UF", "00000-000", null);
             var clienteMock = new Mock<Cliente>(1, "Cliente Teste", "123.456.789-00", enderecoMock.Object, "cliente@email.com", null);
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             var historicoMock = new Mock<Historico>();
 
             return new Faturamento(DateTime.Now.AddDays(-1), 100.0m, clienteMock.Object)
             {
-                Boletos = new List<Boleto> { boletoMock.Object },
+                Boletos = new List<Fiotec.Boletos.Domain.Entities.Boleto> { boletoMock.Object },
                 Historicos = new List<Historico> { historicoMock.Object }
             };
         }

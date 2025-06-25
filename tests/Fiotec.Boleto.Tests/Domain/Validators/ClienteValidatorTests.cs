@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Fiotec.Boletos.Domain.Entities;
 using Fiotec.Boletos.Domain.Validators;
 using FluentValidation.TestHelper;

@@ -18,7 +18,7 @@ namespace Fiotec.Boletos.Tests.Domain.Entities
             var Emissor = new Emissor("Banco XYZ", "123456789", "Agência 1234", ContaNova);
 
             // Act
-            var boleto = new Boleto(numero, valor, vencimento, status, Emissor, Faturamento);
+            var boleto = new Fiotec.Boletos.Domain.Entities.Boleto(numero, valor, vencimento, status, Emissor, Faturamento);
 
             // Assert
             Assert.Equal(numero, boleto.Numero);
@@ -33,7 +33,7 @@ namespace Fiotec.Boletos.Tests.Domain.Entities
         public void Propriedades_DevemEstarConfiguradas()
         {
             // Arrange
-            var boleto = new Boleto("", 0, DateTime.MinValue, new Status(0, ""), null, null);
+            var boleto = new Fiotec.Boletos.Domain.Entities.Boleto("", 0, DateTime.MinValue, new Status(0, ""), null, null);
 
             // Act
             boleto.Numero = "9876543210";

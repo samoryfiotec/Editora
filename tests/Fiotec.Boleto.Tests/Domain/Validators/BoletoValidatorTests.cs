@@ -11,7 +11,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
     {
         private readonly BoletoValidator _validator = new();
 
-        private static Boleto CreateValidBoleto()
+        private static Fiotec.Boletos.Domain.Entities.Boleto CreateValidBoleto()
         {
             var status = new Status(1, "Ativo");
             var conta = new Conta("1234", "56789", "0", "237", "5");
@@ -19,7 +19,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
             var cliente = new Cliente(1, "Cliente Teste", "123.456.789-00", endereco, "cliente@email.com");
             var faturamento = new Faturamento(DateTime.Now.AddDays(10), 1000.00m, cliente);
             var emissor = new Emissor("Banco Teste", "12345678000199", "Endereço Teste", conta);
-            return new Boleto("123456", 100.00m, DateTime.Today.AddDays(5), status, emissor, faturamento);
+            return new Fiotec.Boletos.Domain.Entities.Boleto("123456", 100.00m, DateTime.Today.AddDays(5), status, emissor, faturamento);
         }
 
         [Fact]
@@ -33,7 +33,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_ValidBoleto_ReturnsNoErrors()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             boletoMock.Object.Numero = "123456";
             boletoMock.Object.Valor = 100.00m;
@@ -49,7 +49,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_NumeroVazio_ReturnsNumeroObrigatorio()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = "";
@@ -66,7 +66,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_ValorZeroOuNegativo_ReturnsValorMaiorQueZero()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = boleto.Numero;
@@ -87,7 +87,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_VencimentoPadrao_ReturnsVencimentoObrigatorio()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = boleto.Numero;
@@ -104,7 +104,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_StatusNulo_ReturnsStatusObrigatorio()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = boleto.Numero;
@@ -121,7 +121,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_EmissorNulo_ReturnsEmissorObrigatorio()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = boleto.Numero;
@@ -138,7 +138,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_FaturamentoNulo_ReturnsFaturamentoObrigatorio()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             var boleto = CreateValidBoleto();
             boletoMock.Object.Numero = boleto.Numero;
@@ -155,7 +155,7 @@ namespace Fiotec.Boletos.Tests.Domain.Validators
         [Fact]
         public void Validate_MultiplosErros_RetornaTodosOsErros()
         {
-            var boletoMock = new Mock<Boleto>();
+            var boletoMock = new Mock<Fiotec.Boletos.Domain.Entities.Boleto>();
             boletoMock.SetupAllProperties();
             boletoMock.Object.Numero = "";
             boletoMock.Object.Valor = 0;
