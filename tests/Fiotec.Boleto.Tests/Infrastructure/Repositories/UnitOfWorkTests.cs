@@ -15,7 +15,6 @@ namespace Fiotec.Boletos.Tests.Infrastructure.Repositories
 
         public UnitOfWorkTests()
         {
-            // Use uma connection string de teste ou SQLite in-memory
             _configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
                 .Build();
