@@ -16,8 +16,16 @@ namespace Fiotec.Boletos.Application.Services
         {
             if (faturamento == null)
                 throw new ArgumentNullException(nameof(faturamento), "Faturamento não pode ser nulo.");
-            await _unitOfWork.Faturamentos.InserirAsync(faturamento);
-            await _unitOfWork.CommitAsync();
+            try
+            {
+                await _unitOfWork.Faturamentos.InserirAsync(faturamento);
+                await _unitOfWork.CommitAsync();
+            }
+            catch
+            {
+                await _unitOfWork.RollbackAsync();
+                throw;
+            }
         }
 
         public async Task<IEnumerable<Faturamento>> ObterTodosFaturamentosAsync()

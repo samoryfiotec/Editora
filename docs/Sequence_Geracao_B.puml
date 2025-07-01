@@ -1,0 +1,11 @@
+@startuml DiagramaSequenciaB
+!theme materia-outline
+title Diagrama de Sequência para Geração de Boletos Alternativo
+actor       ContasPagar  as conta
+participant       Banco         as banco
+participant       Cliente       as cliente
+conta -> banco : Solicita geração de boleto (rest API)
+banco -> conta : Retorna os dados do boleto gerado (json)
+conta -> cliente : Gera o PDF e envia link via e-mail (SendGrid)
+
+@enduml

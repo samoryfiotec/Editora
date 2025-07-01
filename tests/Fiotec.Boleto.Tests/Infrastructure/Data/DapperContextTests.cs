@@ -1,44 +1,55 @@
+using System.Data;
 using Fiotec.Boletos.Infrastructure.Data;
+using Fiotec.Boletos.Infrastructure.Data.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Moq;
+using Xunit;
 
 namespace Fiotec.Boletos.Tests.Infrastructure.Data
 {
     public class DapperContextTests
     {
-        //[Fact]
-        //public void Constructor_ShouldSetConnectionString()
-        //{
-        //    // Arrange
-        //    var mockConfig = new Mock<IConfiguration>();
-        //    var mockSection = new Mock<IConfigurationSection>();
-        //    mockSection.Setup(s => s.Value).Returns("Server=localhost,1433;Database=Boletos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=True;");
-        //    mockConfig.Setup(c => c.GetSection("ConnectionStrings:DefaultConnection")).Returns(mockSection.Object);
-        //    mockConfig.Setup(c => c.GetConnectionString("DefaultConnection")).Returns("Server=localhost,1433;Database=Boletos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=True;");
+        [Fact]
+        public void Construtor_DeveDefinirStringDeConexao()
+        {
+            // Arrange
+            var mockConfig = new Mock<IConfiguration>();
+            var mockSection = new Mock<IConfigurationSection>();
+            mockSection.Setup(s => s["DefaultConnection"])
+                .Returns("Server=.;Database=TestDb;Trusted_Connection=True;");
+            mockConfig.Setup(c => c.GetSection("ConnectionStrings"))
+                .Returns(mockSection.Object);
 
-        //    // Act
-        //    var context = new DapperContext(mockConfig.Object);
+            // Act
+            var context = new DapperContext(mockConfig.Object);
 
-        //    // Assert
-        //    Assert.NotNull(context);
-        //}
+            // Assert
+            using var conn = context.CreateConnection();
+            Assert.IsType<SqlConnection>(conn);
+            Assert.Equal("Server=.;Database=TestDb;Trusted_Connection=True;", conn.ConnectionString);
+        }
 
-        //[Fact]
-        //public void CreateConnection_ShouldReturnSqlConnectionWithCorrectConnectionString()
-        //{
-        //    // Arrange
-        //    var expectedConnectionString = "Server=localhost,1433;Database=Boletos;User Id=sa;Password=SenhaForte123!;TrustServerCertificate=True;";
-        //    var mockConfig = new Mock<IConfiguration>();
-        //    mockConfig.Setup(c => c.GetConnectionString("DefaultConnection")).Returns(expectedConnectionString);
-        //    var context = new DapperContext(mockConfig.Object);
+        [Fact]
+        public void CriarConexao_DeveRetornarSqlConnection()
+        {
+            // Arrange
+            var mockConfig = new Mock<IConfiguration>();
+            var mockSection = new Mock<IConfigurationSection>();
+            mockSection.Setup(s => s["DefaultConnection"])
+                .Returns("Data Source=localhost;Initial Catalog=TestDb;Integrated Security=True;");
+            mockConfig.Setup(c => c.GetSection("ConnectionStrings"))
+                .Returns(mockSection.Object);
 
-        //    // Act
-        //    using var connection = context.CreateConnection();
+            var context = new DapperContext(mockConfig.Object);
 
-        //    // Assert
-        //    Assert.IsType<SqlConnection>(connection);
-        //    Assert.Equal(expectedConnectionString, connection.ConnectionString);
-        //}
+            // Act
+            using var connection = context.CreateConnection();
+
+            // Assert
+            Assert.NotNull(connection);
+            Assert.IsType<SqlConnection>(connection);
+            Assert.Equal("Data Source=localhost;Initial Catalog=TestDb;Integrated Security=True;", connection.ConnectionString);
+        }
     }
 }

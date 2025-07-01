@@ -4,7 +4,7 @@ title Diagrama de Sequência para Geração de Boletos
 actor       ContasPagar  as conta
 participant       Banco         as banco
 participant       Cliente       as cliente
-conta -> banco : Solicitar geração de boleto (rest API)
+conta -> banco : Solicita geração de boleto (rest API)
 banco -> conta : Retorna boleto gerado (link)
 conta -> cliente : Envia boleto via e-mail (SendGrid)
 
