@@ -1,27 +1,35 @@
-@startuml DiagramaSequencia
+@startuml DiagramaSequenciaCriacao
 !theme materia-outline
 title Diagrama de Sequência para Criação de Boletos
 actor       ContasPagar  as conta
 
 participant       SAP as sap
 participant       BD        as bancodedados
+participant       Banco     as banco
 
 conta -> sap : Buscar cliente e faturamento (rfc)
-sap -> conta : Retorna cliente e faturamento (rfc)
-conta -> bancodedados : Verificar se já existe faturamento e cliente (tcp)
-bancodedados -> conta : Retorna faturamento e/ ou cliente existente (tcp)
+sap -> conta : Retorna cliente e faturamento (wcf)
+conta -> bancodedados : Consulta existência de cliente e faturamento (tcp) 
+bancodedados -> conta : Retorna cliente e/ou faturamento existente (tcp)
 alt Faturamento não existe
-    conta -> bancodedados : Criar boleto e inserir faturamento no BD (tcp)
+    conta -> bancodedados : Inserir faturamento (tcp)
 alt Cliente não existe
-        conta -> bancodedados : Criar cliente (tcp)
-        conta -> bancodedados : Criar faturamento (tcp)
+        conta -> bancodedados : Inserir cliente (tcp)
+        conta -> bancodedados : Inserir faturamento (tcp)
     else Cliente já existe
-        conta -> bancodedados : Atualizar cliente (tcp)
+        conta -> bancodedados : Atualizar cliente (tcp) 
+        note right
+  O endereço do cliente 
+  é necessário para 
+  o cálculo do valor 
+  do boleto.
+end note
     end
     conta -> bancodedados : Criar faturamento (tcp)
-else Faturamento já existe
+else Faturamento já existe (dúvida)
     conta -> bancodedados : Atualizar faturamento (tcp)
 end
-conta -> bancodedados : Criar boleto (rest API)
+conta -> banco : Gerar boleto (dúvida: precisa retorno?)(rest API)
+conta -> bancodedados : Inserir boleto (duvida: precisa retorno?) (tcp)
 
 @enduml
