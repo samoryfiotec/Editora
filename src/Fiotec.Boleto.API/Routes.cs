@@ -1,5 +1,8 @@
-﻿using Fiotec.Boletos.Application.Services;
+﻿using Asp.Versioning;
+using Asp.Versioning.Builder;
+using Fiotec.Boletos.Application.Services;
 using Fiotec.Boletos.Domain.Entities;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fiotec.Boletos.API
@@ -7,11 +10,23 @@ namespace Fiotec.Boletos.API
     public class Routes
     {
         public static void MapRoutes(IEndpointRouteBuilder app)
-        {          
-            app.MapGet("/", () => "Olá Boletos!");
+        {
+            ApiVersionSet versionSet = app.NewApiVersionSet()
+                    .HasApiVersion(new ApiVersion(1))
+                    .ReportApiVersions()
+                    .Build();
 
             var faturamentoMap = app.MapGroup("/api/faturamento")
                 .WithTags("Faturamento");
+                //.AddEndpointFilterFactory((factoryContext, next) =>
+                //{
+                //    return async context =>
+                //    {
+                //        var validator = context.HttpContext.RequestServices.GetRequiredService<IValidator<Faturamento>>();
+                //        var filter = new ValidationFilter<Faturamento>(validator);
+                //        return await filter.InvokeAsync(context, next);
+                //    };
+                //});
 
             faturamentoMap.MapGet("/", async ([FromServices] FaturamentoService faturamentoService) =>
             {
@@ -33,6 +48,27 @@ namespace Fiotec.Boletos.API
                 await faturamentoService.CriarFaturamentoAsync(faturamento);
                 return Results.Created($"/api/faturamento/{faturamento.Id}", faturamento);
             });
+
+            var boletoMap = app.MapGroup("/api/boleto")
+                .WithTags("Boleto");
+
+            boletoMap.MapGet("/", static async ([FromServices] BoletoService boletoService) =>
+            {
+                var boletos = await boletoService.ObterTodosAsync();
+                return Results.Ok(boletos);
+            });
+
+            var clienteMap = app.MapGroup("/api/cliente")
+                .WithTags("Cliente");
+
+            clienteMap.MapGet("/", async ([FromServices] ClienteService clienteService) =>
+            {
+                var clientes = await clienteService.ObterTodosAsync();
+                return Results.Ok(clientes);
+            });
+
+            var historicoMap = app.MapGroup("/api/historico")
+                .WithTags("Historico");
         }
     }
 }

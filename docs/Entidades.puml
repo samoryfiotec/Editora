@@ -9,7 +9,6 @@ entity Emissor {
 }
 
 entity Cliente {
-    +id: int
     *nome: string
     *cpf: string
     *endereco: Endereco        
@@ -18,28 +17,29 @@ entity Cliente {
 }
 
 entity Faturamento {
-    +id: int
+    *codigo: int
     *data: date
     *valor: decimal
-    *cliente_id: int
+    *cliente: Cliente
 }
 
 entity Boleto {
-    +id: int
     *numero: string
     *valor: decimal
-    *vencimento: date
+    juros: decimal
+    multa: decimal
+    *dataInclusao: date
+    *dataVencimento: date
     *status: Status
     *emissor: Emissor
-    *faturamento_id: int
+    *faturamento: Faturamento
 }
 
 entity Historico {
-    +id: int
-    *status: Status
+    *Status: status
     *observacao: string
     *data_inclusao: date
-    *faturamento_id: int
+    *faturamento: Faturamento    
 }
 
 entity Endereco {
@@ -49,7 +49,7 @@ entity Endereco {
     *cidade: string
     *estado: string
     *cep: string
-    *cliente_id: int
+    *cliente: Cliente
 }
 
 entity Conta {
@@ -61,7 +61,6 @@ entity Conta {
 }
 
 entity Status {
-    +id: int
     *descricao: string
 }
 

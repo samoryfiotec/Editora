@@ -39,7 +39,7 @@ namespace Fiotec.Boletos.Infrastructure.Repositories
             }, _transaction);
         }
 
-        public Task AtualizarAsync(Faturamento entity)
+        public Task AtualizarFaturamentoAsync(Faturamento entity)
         {
             string sql = "UPDATE Faturamento SET Data = @Data, Valor = @Valor, Cliente_id = @ClienteId WHERE Id = @Id";
             return _connection.ExecuteAsync(sql, new

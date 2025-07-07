@@ -2,7 +2,7 @@ using Fiotec.Boletos.ConsultaAtiva;
 using Microsoft.Extensions.Logging;
 using Moq;
 
-namespace Fiotec.Boletos.Tests
+namespace Fiotec.Boletos.Tests.Rest
 {
     public class WorkerTests
     {
