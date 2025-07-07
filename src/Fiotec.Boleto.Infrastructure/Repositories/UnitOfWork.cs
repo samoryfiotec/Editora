@@ -9,7 +9,8 @@ namespace Fiotec.Boletos.Infrastructure.Repositories
         private readonly IDbConnection _connection;
         private IDbTransaction _transaction;
         public IFaturamentoRepository Faturamentos { get; }
-
+        public IClienteRepository Clientes { get;  }
+        public IBoletoRepository Boletos { get; }
 
         public UnitOfWork(IDbConnectionFactory connectionFactory)
         {
@@ -18,6 +19,8 @@ namespace Fiotec.Boletos.Infrastructure.Repositories
             _transaction = _connection.BeginTransaction();
 
             Faturamentos = new FaturamentoRepository(_connection, _transaction);
+            Clientes = new ClienteRepository(_connection, _transaction);
+            Boletos = new BoletoRepository(_connection, _transaction);
 
         }
 

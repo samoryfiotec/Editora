@@ -4,6 +4,6 @@ namespace Fiotec.Boletos.Infrastructure.Repositories.Interfaces
 {
     public interface IFaturamentoRepository : IRepository<Faturamento>
     {
-        Task AtualizarAsync(Faturamento entity);
+        Task AtualizarFaturamentoAsync(Faturamento entity);
     }
 }
