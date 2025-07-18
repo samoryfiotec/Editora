@@ -1,6 +1,4 @@
-﻿using Fiotec.Boletos.Domain.Entities;
-
-namespace Fiotec.Boletos.Domain.Entities
+﻿namespace Fiotec.Boletos.Domain.Entities
 {
     public class Boleto
     {

@@ -2,6 +2,7 @@
 using Dapper;
 using Fiotec.Boletos.Domain.Entities;
 using Fiotec.Boletos.Infrastructure.Repositories.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Fiotec.Boletos.Infrastructure.Repositories
 {
@@ -9,17 +10,33 @@ namespace Fiotec.Boletos.Infrastructure.Repositories
     {
         private readonly IDbConnection _connection;
         private readonly IDbTransaction _transaction;
+        private readonly ILogger<BoletoRepository> _logger;
 
-        public BoletoRepository(IDbConnection connection, IDbTransaction transaction)
+        public BoletoRepository(IDbConnection connection, IDbTransaction transaction, ILogger<BoletoRepository> logger)
         {
             _connection = connection;
             _transaction = transaction;
+            _logger = logger;
         }
 
         public async Task<Boleto?> ObterPorId(int id)
         {
-            string sql = "SELECT * FROM Boleto WHERE Id = @Id";
-            return await _connection.QueryFirstOrDefaultAsync<Boleto>(sql, new { Id = id }, _transaction);
+            try
+            {
+                _logger.LogInformation("Buscando boleto com ID {BoletoId}", id);
+                string sql = "SELECT * FROM Boleto WHERE Id = @Id";
+                var boleto = await _connection.QueryFirstOrDefaultAsync<Boleto>(sql, new { Id = id }, _transaction);
+                if (boleto == null)
+                {
+                    _logger.LogWarning("Nenhum boleto encontrado com ID {BoletoId}", id);
+                }
+                return boleto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erro ao buscar boleto com ID {BoletoId}", id);
+                throw;
+            }            
         }
 
         public async Task<IEnumerable<Boleto>> ObterTodosAsync()

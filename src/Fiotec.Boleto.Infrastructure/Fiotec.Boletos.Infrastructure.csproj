@@ -22,4 +22,9 @@
     <ProjectReference Include="..\Fiotec.Boleto.Domain\Fiotec.Boletos.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Bradesco\" />
+    <Folder Include="QuestPDF\" />
+  </ItemGroup>
+
 </Project>

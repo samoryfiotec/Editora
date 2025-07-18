@@ -2,6 +2,7 @@
 using Dapper;
 using Fiotec.Boletos.Domain.Entities;
 using Fiotec.Boletos.Infrastructure.Repositories.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace Fiotec.Boletos.Infrastructure.Repositories
 {
@@ -9,11 +10,13 @@ namespace Fiotec.Boletos.Infrastructure.Repositories
     {
         private readonly IDbConnection _connection;
         private readonly IDbTransaction _transaction;
+        private readonly ILogger<BoletoRepository> _logger;
 
-        public FaturamentoRepository(IDbConnection connection, IDbTransaction transaction)
+        public FaturamentoRepository(IDbConnection connection, IDbTransaction transaction, ILogger<BoletoRepository> logger)
         {
             _connection = connection;
             _transaction = transaction;
+            _logger = logger;
         }
 
         public Task<Faturamento?> ObterPorId(int id)
